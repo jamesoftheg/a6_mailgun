@@ -15,13 +15,11 @@
         </tr>
         </thead>
         <tbody>
-            @foreach($items as $key => $item)
-                <tr>
-                    <td>{{$item->name}}</td>
-                    <td>{{$item->description}}</td>
-                    <td>{{$item->price}}</td>
-                </tr>
-            @endforeach
+            <tr>
+                <td>Carrot</td>
+                <td>Vegetable</td>
+                <td>.99</td>
+            </tr>
         </tbody>
     </table>
 @endsection
