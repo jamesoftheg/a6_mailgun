@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
+    public $name;
+    public $description;
+    public $price;
     use HasFactory;
 }
