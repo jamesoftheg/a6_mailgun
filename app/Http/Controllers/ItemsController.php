@@ -15,8 +15,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
-
-        return view('items.index'); //->with('items', $rooms);
+        $items = Item::all();
+        return view('items.index')->with('items', $rooms);
     }
 
     /**
@@ -87,7 +87,21 @@ class ItemsController extends Controller
 
     public function add(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect('items')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        else {
+            $item_name = $request->name;
+            $item_price = $request->price;
+            $item_quantity = $request->quantity;
+            $item_id = Item::select('*')->where('name', $item_name)->value('id');
+        }
 
     }
 
