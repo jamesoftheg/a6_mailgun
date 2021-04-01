@@ -33,7 +33,17 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->description}}</td>
                             <td>{{$item->price}}</td>
-
+                            <form action="/items" method="post">
+                            <td>                    
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="quantity"  name="quantity">
+                                </div>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </td>
+                            </form>
                         </tr>
                     @endforeach
                 </tbody>
@@ -60,11 +70,11 @@
                 <tbody>
                     @foreach($items as $key => $item)
                         <tr>
-                            
+                            <?php $totalprice = $item->price * $item->quantity ?>
                             <td>{{$item->name}}</td>
                             <td>{{$item->price}}</td>
                             <td>{{$item->quantity}}</td>
-                            <td>Test</td>
+                            <td><?php $totalprice ?></td>
                         </tr>
                     @endforeach
                 </tbody>

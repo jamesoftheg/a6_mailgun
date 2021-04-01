@@ -16,7 +16,7 @@ class ItemsController extends Controller
     public function index()
     {
         $items = Item::all();
-        return view('items.index')->with('items', $rooms);
+        return view('items.index')->with('items', $items);
     }
 
     /**
