@@ -15,9 +15,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $data = session()->all();
         $items = Item::all();
-        return view('items.index')->with('items', $items)->with('data', $data);
+        return view('items.index')->with('items', $items);
     }
 
     /**
