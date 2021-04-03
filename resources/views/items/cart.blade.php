@@ -19,9 +19,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach(session::get('cart') as $id => $item)
+                    @foreach(session::get('cart') as $item)
                         <tr>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item}}</td>
                         </tr>
                     @endforeach
                 </tbody>

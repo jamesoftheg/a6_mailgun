@@ -89,7 +89,10 @@ class ItemsController extends Controller
 
         $item = Item::find($id);
 
-        Session::push('cart', $item);
+        $cart = $request->session()->get('cart');
+
+        $request->session()->put('cart', 'Test: ' . $id . ' id.');
+
         return redirect()->back()->with('success', 'Item added to cart successfully!');
         /*
 
