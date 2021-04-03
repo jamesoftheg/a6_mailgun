@@ -26,6 +26,7 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->description}}</td>
                             <td>{{$item->price}}</td>
+                            <td><a href="{{ url('add/'.$item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a></td>
                             <form action="/items" method="post">
                             <td>                    
                                 @csrf
