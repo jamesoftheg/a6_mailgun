@@ -19,11 +19,11 @@ use App\Http\Controllers\ItemsController;
 // Using a controller
 Route::get('/', [PagesController::class,"index"]);
 
+Route::get('items/cart', 'ItemsController@cart');
+
 Route::resource('items', ItemsController::class);
 
 Route::resource('add/{id}', ItemsController::class);
-
-Route::get('items/cart', ItemsController::class);
 
 //Route::get('items/cart', [ItemsController::class,"cart"]);
 
