@@ -9,7 +9,7 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
-        @if(count($items) > 0)
+        @if(session('cart'))
             <table class="table" id="cart">
                 <thead>
                 <tr>
@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach($items as $key => $item)
+                    @foreach(session('cart') as $key => $item)
                         <tr>
                             <?php $totalprice = $item->price * $item->quantity ?>
                             <td>{{$item->name}}</td>
