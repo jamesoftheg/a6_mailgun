@@ -99,9 +99,7 @@ class ItemsController extends Controller
         */
 
         $item = Item::find($id);
-        if(!$item) {
-            abort(404);
-        }
+
         $cart = session()->get('cart');
         // if cart is empty then this the first product
         if(!$cart) {
