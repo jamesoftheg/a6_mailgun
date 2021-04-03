@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\OrderShipped;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ItemsController;
 
@@ -20,6 +21,10 @@ Route::get('/', [PagesController::class,"index"]);
 
 Route::resource('items', ItemsController::class);
 
-Route::get('add/{id}', 'ItemsController@add');
+Route::resource('add/{id}', ItemsController::class);
 
-Route::get('cart', 'ItemsController@cart');
+Route::resource('cart', ItemsController::class);
+
+//Route::get('add/{id}', 'ItemsController@add');
+
+//Route::get('cart', 'ItemsController@cart');
