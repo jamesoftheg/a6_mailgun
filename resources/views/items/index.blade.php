@@ -9,6 +9,22 @@
 
         <h1>Items</h1>
 
+        @if(session('success'))
+
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+
+        @endif
+
+        @foreach($data as $key => $d)
+        <tr>
+            <td>{{$d->name}}</td>
+            <td>{{$d->description}}</td>
+            <td>{{$d->price}}</td>
+        </tr>
+        @endforeach
+
         @if(count($items) > 0)
             <table class="table">
                 <thead>

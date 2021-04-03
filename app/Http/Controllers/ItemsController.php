@@ -15,8 +15,9 @@ class ItemsController extends Controller
      */
     public function index()
     {
+        $data = session()->all();
         $items = Item::all();
-        return view('items.index')->with('items', $items);
+        return view('items.index')->with('items', $items)->with('data', $data);
     }
 
     /**
@@ -87,6 +88,7 @@ class ItemsController extends Controller
 
     public function add(Request $request, $id) {
 
+        /*
         $getItem = Item::find($id);
         $item = [];
         $item['id'] = $id;
@@ -95,7 +97,8 @@ class ItemsController extends Controller
 
         $request->session()->push('cart', array_merge((array)Session::get('cart',[]), $item));
         return redirect()->back()->with('success', 'Product added to cart successfully!');
-        /*
+        */
+
         $item = Item::find($id);
         if(!$item) {
             abort(404);
@@ -127,7 +130,7 @@ class ItemsController extends Controller
         ];
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
-        */
+
     }
 
     public function cart() {
