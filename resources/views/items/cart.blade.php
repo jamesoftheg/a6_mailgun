@@ -11,6 +11,11 @@
         <div class="hotelcard">
         @if(session()->has('cart'))
            <p>Cart found.</p>
+           @foreach(session()->get('cart') as $item)
+                        <p>
+                            <td>{{$item}}</td>
+                        </p>
+            @endforeach
         @else
             <p>No items found.</p>
         @endif
