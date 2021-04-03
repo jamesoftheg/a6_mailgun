@@ -23,7 +23,7 @@ Route::resource('items', ItemsController::class);
 
 Route::resource('add/{id}', ItemsController::class);
 
-Route::resource('/cart', ItemsController::class);
+Route::get('cart', ItemsController::class);
 
 //Route::get('add/{id}', 'ItemsController@add');
 
