@@ -11,11 +11,10 @@
         <div class="hotelcard">
         @if(session()->has('cart'))
            <p>Cart found.</p>
-           @foreach(session()->get('cart') as $item)
-                        <p>
-                            <td>{{$item}}</td>
-                        </p>
-            @endforeach
+                <p>
+                    <td>{{session()->get('Test')}}</td>
+                </p>
+            
         @else
             <p>No items found.</p>
         @endif
