@@ -128,12 +128,12 @@ class ItemsController extends Controller
             "price" => $item->price
         ];
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Item added to cart successfully!');
 
     }
 
     public function cart() {
-        $cart = session('cart');
+        $cart = session('cart')->all();
         return view('items.cart')->with('cart', $cart);
     }
 
