@@ -87,18 +87,11 @@ class ItemsController extends Controller
 
     public function add(Request $request, $id) {
 
-        /*
-        $getItem = Item::find($id);
-        $item = [];
-        $item['id'] = $id;
-        $item['name'] = $getItem->name;
-        $item['quantity'] = 1;
-
-        $request->session()->push('cart', array_merge((array)Session::get('cart',[]), $item));
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
-        */
-
         $item = Item::find($id);
+
+        Session::push('cart', $item);
+
+        /*
 
         $cart = session()->get('cart');
         // if cart is empty then this the first product
@@ -127,7 +120,7 @@ class ItemsController extends Controller
         ];
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Item added to cart successfully!');
-
+        */
     }
 
     public function cart() {

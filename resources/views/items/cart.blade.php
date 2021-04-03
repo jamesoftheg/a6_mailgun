@@ -22,8 +22,6 @@
                     @foreach(session::get('cart') as $id => $item)
                         <tr>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->price}}</td>
-                            <td>{{$item->quantity}}</td>
                         </tr>
                     @endforeach
                 </tbody>
