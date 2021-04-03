@@ -9,7 +9,7 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
-        @if(session::has('cart'))
+        @if(session()->has('cart'))
            <p>Cart found.</p>
         @else
             <p>No items found.</p>
