@@ -19,7 +19,9 @@ use App\Http\Controllers\ItemsController;
 // Using a controller
 Route::get('/', [PagesController::class,"index"]);
 
-Route::get('items/cart', 'ItemsController@cart');
+//Route::get('items/cart', 'ItemsController@cart');
+
+Route::get('cart', [ItemsController::class,"cart"]);
 
 Route::resource('items', ItemsController::class);
 
