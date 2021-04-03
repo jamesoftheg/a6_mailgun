@@ -23,7 +23,9 @@ Route::resource('items', ItemsController::class);
 
 Route::resource('add/{id}', ItemsController::class);
 
-Route::get('items/cart', [ItemsController::class,"cart"]);
+Route::get('items/cart', ItemsController::class);
+
+//Route::get('items/cart', [ItemsController::class,"cart"]);
 
 //Route::get('add/{id}', 'ItemsController@add');
 
