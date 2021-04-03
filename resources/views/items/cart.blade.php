@@ -9,23 +9,8 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
-        @if(session()->has('cart'))
-            <table class="table" id="cart">
-                <thead>
-                <tr>
-                    <th scope="col">Item:</th>
-                    <th scope="col">Item Price:</th>
-                    <th scope="col">Quantity:</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach(session()->get('cart') as $item)
-                        <tr>
-                            <td>{{$item}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        @if(session::has('cart'))
+           <p>Cart found.</p>
         @else
             <p>No items found.</p>
         @endif
