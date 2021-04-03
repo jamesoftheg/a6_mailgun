@@ -127,8 +127,7 @@ class ItemsController extends Controller
     }
 
     public function cart() {
-        $cart = session('cart')->all();
-        return view('items.cart')->with('cart', $cart);
+        return view('items.cart');
     }
 
 }
