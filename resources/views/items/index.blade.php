@@ -8,14 +8,7 @@
         <p>Goods and services.</p>
 
         <h1>Items</h1>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+
         @if(count($items) > 0)
             <table class="table">
                 <thead>
