@@ -9,7 +9,7 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
-        @if(session('cart'))
+        @if(session::has('cart'))
             <table class="table" id="cart">
                 <thead>
                 <tr>
@@ -19,7 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach(session('cart') as $id => $item)
+                    @foreach(session::get('cart') as $id => $item)
                         <tr>
                             <td>{{$item->name}}</td>
                             <td>{{$item->price}}</td>
