@@ -23,8 +23,14 @@
                     <th scope="col">Quantity:</th>
                     <th scope="col">Total:</th>
                 </tr>
+                </thead>
+                <tbody>
                 @foreach(session('cart') as $id => $item)
-                    <?php $rowTotal = $item['quantity'] * $item['price']; ?>
+                    <?php 
+                    $quantity = $item['quantity'];
+                    $price = $item['price'];
+                    $rowTotal = $quantity * $price; 
+                    ?>
                     <tr>
                         <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
@@ -32,6 +38,11 @@
                         <td><?php $rowTotal ?></td>
                     </tr>
                 @endforeach
+                </tbody>
+            </table>
+
+            <p>Checkout:</p>
+
         @else
             <p>No items found.</p>
         @endif
