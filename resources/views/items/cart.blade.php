@@ -35,7 +35,7 @@
                         <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
                         <td>{{$item['quantity']}}</td>
-                        <td><?php $rowTotal ?></td>
+                        <td>{{$item['quantity'] * $item['price']}}</td>
                     </tr>
                 @endforeach
                 </tbody>
