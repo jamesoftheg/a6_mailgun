@@ -11,13 +11,25 @@
         <div class="hotelcard">
         @if(session()->has('cart'))
            <p>Cart found.</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Item Name:</th>
+                    <th scope="col">Price:</th>
+                    <th scope="col">Quantity:</th>
+                    <th scope="col">Total:</th>
+                </tr>
                 @foreach(session('cart') as $id => $item)
-                <p>
+                <?php $total += $item['quantity'] * $item['price'] ?>
+                <?php $rowTotal = $item['quantity'] * $item['price'] ?>
+                <tr>
                     <td>{{$item['name']}}</td>
                     <td>{{$item['price']}}</td>
                     <td>{{$item['quantity']}}</td>
-                </p>
+                    <td><?php $rowTotal ?></td>
+                </tr>
                 @endforeach
+                <p><?php $total ?></p>
         @else
             <p>No items found.</p>
         @endif
