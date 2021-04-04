@@ -27,8 +27,8 @@
                 <tbody>
                 @foreach(session('cart') as $id => $item)
                     <?php 
-                    $quantity = {{$item['quantity']}};
-                    $price = {{$item['price']}};
+                    $quantity = (int)$item['quantity'];
+                    $price = (double)$item['price'];
                     $rowTotal = $quantity * $price; 
                     ?>
                     <tr>
