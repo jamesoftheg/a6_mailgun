@@ -27,7 +27,7 @@
                 <tbody>
                 @foreach(session('cart') as $id => $item)
                     <?php 
-                        $total += {{$item['quantity'] * $item['price']}};
+                        {{$total += $item['quantity'] * $item['price']}};
                     ?>
                     <tr>
                         <td>{{$item['name']}}</td>
@@ -37,7 +37,7 @@
                     </tr>
                 @endforeach
                 </tbody>
-                <p><?php $total ?></p>
+                <p>Total: <?php $total ?></p>
             </table>
 
             <p>Checkout:</p>
