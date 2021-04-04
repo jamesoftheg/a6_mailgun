@@ -9,10 +9,10 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
-        @if(session()->has('Test'))
+        @if(session()->has('cart'))
            <p>Cart found.</p>
                 <p>
-                    <td>{{session()->get('Test')}}</td>
+                    <td>{{session()->get('name')}}</td>
                 </p>
             
         @else
