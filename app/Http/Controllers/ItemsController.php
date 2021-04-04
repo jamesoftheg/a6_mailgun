@@ -89,41 +89,45 @@ class ItemsController extends Controller
 
         $item = Item::find($id);
 
+        $cart = session()->get("cart");
+
+        if ($cart === null) {
+            $cart = [];
+        }
+
+        $item_name = Item::select('*')->where('id', $id)->value('name');
+        $item_price = Item::select('*')->where('id', $id)->value('price');
+        $item_quantity = $request->quantity;
+
+        $added = false;
+
+        foreach($cart as &$item) {
+            if($item['name'] === $item_name) {
+                $item['quantity'] += $item_quantity;
+                $added = true;
+            }
+        }
+
+        if($added === false) {
+            array_push($cart, [
+                'name' => $item_name,
+                'price' => $item_price,
+                'quantity' => $item_quantity
+            ]);
+        }
+
+        session(
+            ['cart' => $cart]
+        );
+
+        /*
         $cart = $request->session()->get('cart');
 
         $request->session()->put('Test', 'Test id.');
-
-        return redirect()->back()->with('success', 'Item added to cart successfully!');
-        /*
-
-        $cart = session()->get('cart');
-        // if cart is empty then this the first product
-        if(!$cart) {
-            $cart = [
-                    $id => [
-                        "name" => $item->name,
-                        "quantity" => 1,
-                        "price" => $item->price
-                    ]
-            ];
-            session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Item added to cart successfully!');
-        }
-        // if cart not empty then check if this product exist then increment quantity
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-            session()->put('cart', $cart);
-            return redirect()->back()->with('success', 'Item added to cart successfully!');
-        }
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $item->name,
-            "quantity" => 1,
-            "price" => $item->price
-        ];
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Item added to cart successfully!');
         */
+
+        return redirect()->back()->with('success', 'Item added to cart successfully!');
+
     }
 
     public function cart() {
