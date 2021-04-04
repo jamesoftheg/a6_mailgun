@@ -20,7 +20,6 @@
                     <th scope="col">Total:</th>
                 </tr>
                 @foreach(session('cart') as $id => $item)
-                <?php $total += $item['quantity'] * $item['price'] ?>
                 <?php $rowTotal = $item['quantity'] * $item['price'] ?>
                 <tr>
                     <td>{{$item['name']}}</td>
@@ -29,7 +28,6 @@
                     <td><?php $rowTotal ?></td>
                 </tr>
                 @endforeach
-                <p><?php $total ?></p>
         @else
             <p>No items found.</p>
         @endif
