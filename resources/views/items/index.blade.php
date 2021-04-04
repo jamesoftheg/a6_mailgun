@@ -38,7 +38,7 @@
                             <td>                    
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="quantity"  name="quantity">
+                                    <input type="number" class="form-control" id="quantity"  name="quantity">
                                 </div>
                             </td>
                             <td>
