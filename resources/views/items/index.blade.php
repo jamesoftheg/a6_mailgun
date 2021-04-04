@@ -34,7 +34,6 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->description}}</td>
                             <td>{{$item->price}}</td>
-                            <td><a href="{{ url('add/'.$item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a></td>
                             <form action="/add/{{$item->id}}" method="post">
                             <td>                    
                                 @csrf
@@ -43,13 +42,15 @@
                                 </div>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-warning btn-block text-center">Add to Cart</button>
                             </td>
                             </form>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            <a class="nav-item nav-link" href="/cart">View Cart</a>
         @else
             <p>No items found.</p>
         @endif

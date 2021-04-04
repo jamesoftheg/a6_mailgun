@@ -120,14 +120,7 @@ class ItemsController extends Controller
             ['cart' => $cart]
         );
 
-        /*
-        $cart = $request->session()->get('cart');
-
-        $request->session()->put('Test', 'Test id.');
-        */
-
         return redirect()->back()->with('success', 'Item added to cart successfully!');
-
     }
 
     public function cart() {
