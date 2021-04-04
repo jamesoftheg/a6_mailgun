@@ -9,6 +9,10 @@
     <h1>Shopping Cart</h1>
     <div class="container">
         <div class="hotelcard">
+
+        <?php $rowTotal = 0; ?>
+        <?php $total = 0; ?>
+
         @if(session()->has('cart'))
            <p>Cart found.</p>
             <table class="table">
@@ -20,13 +24,13 @@
                     <th scope="col">Total:</th>
                 </tr>
                 @foreach(session('cart') as $id => $item)
-                <?php $rowTotal = {{$item['quantity']}} * {{$item['price']}} ?>
-                <tr>
-                    <td>{{$item['name']}}</td>
-                    <td>{{$item['price']}}</td>
-                    <td>{{$item['quantity']}}</td>
-                    <td><?php $rowTotal ?></td>
-                </tr>
+                    <?php $rowTotal = $item['quantity'] * $item['price']; ?>
+                    <tr>
+                        <td>{{$item['name']}}</td>
+                        <td>{{$item['price']}}</td>
+                        <td>{{$item['quantity']}}</td>
+                        <td><?php $rowTotal ?></td>
+                    </tr>
                 @endforeach
         @else
             <p>No items found.</p>
