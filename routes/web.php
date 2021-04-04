@@ -23,7 +23,9 @@ Route::get('/', [PagesController::class,"index"]);
 
 Route::get('cart', [ItemsController::class,"cart"]);
 
-Route::get('add/{id}', [ItemsController::class,"add"]);
+//Route::get('add/{id}', [ItemsController::class,"add"]);
+
+Route::post('add/{id}', [ItemsController::class,"add"]);
 
 Route::resource('items', ItemsController::class);
 
