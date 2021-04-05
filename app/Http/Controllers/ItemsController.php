@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\OrdersShipped;
+Use Illuminate\Support\Facades\Mail;
 
 class ItemsController extends Controller
 {
