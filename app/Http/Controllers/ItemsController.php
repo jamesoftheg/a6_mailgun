@@ -23,40 +23,50 @@ class ItemsController extends Controller
 
     public function add(Request $request, $id) {
 
-        $item = Item::find($id);
+        $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|min:1',
+        ]);
 
-        $cart = session()->get("cart");
+        if ($validator->fails()) {
+            return redirect('items.index')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $item = Item::find($id);
 
-        if ($cart === null) {
-            $cart = [];
-        }
+            $cart = session()->get("cart");
 
-        $item_name = Item::select('*')->where('id', $id)->value('name');
-        $item_price = Item::select('*')->where('id', $id)->value('price');
-        $item_quantity = $request->quantity;
-
-        $added = false;
-
-        foreach($cart as &$item) {
-            if($item['name'] === $item_name) {
-                $item['quantity'] += $item_quantity;
-                $added = true;
+            if ($cart === null) {
+                $cart = [];
             }
+
+            $item_name = Item::select('*')->where('id', $id)->value('name');
+            $item_price = Item::select('*')->where('id', $id)->value('price');
+            $item_quantity = $request->quantity;
+
+            $added = false;
+
+            foreach($cart as &$item) {
+                if($item['name'] === $item_name) {
+                    $item['quantity'] += $item_quantity;
+                    $added = true;
+                }
+            }
+
+            if($added === false) {
+                array_push($cart, [
+                    'name' => $item_name,
+                    'price' => $item_price,
+                    'quantity' => $item_quantity
+                ]);
+            }
+
+            session(
+                ['cart' => $cart]
+            );
+
+            return redirect()->back()->with('success', 'Item added to cart successfully!');
         }
-
-        if($added === false) {
-            array_push($cart, [
-                'name' => $item_name,
-                'price' => $item_price,
-                'quantity' => $item_quantity
-            ]);
-        }
-
-        session(
-            ['cart' => $cart]
-        );
-
-        return redirect()->back()->with('success', 'Item added to cart successfully!');
     }
 
     public function cart() {

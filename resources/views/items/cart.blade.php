@@ -14,7 +14,7 @@
         <?php $total = 0; ?>
 
         @if(session()->has('cart'))
-           <p>Cart found.</p>
+           <p>Cart has been found.</p>
             <table class="table">
                 <thead>
                 <tr>
@@ -66,7 +66,7 @@
             </form>
 
         @else
-            <p>No items found.</p>
+            <p>Cart not found.</p>
         @endif
         </div>
     </div>
