@@ -27,6 +27,6 @@ Route::post('checkout', [ItemsController::class,"checkout"]);
 
 Route::resource('items', ItemsController::class);
 
-Route::post('emails', [CheckoutController::class,"emails"]);
+// Route::post('emails', [CheckoutController::class,"emails"]);
 
-Route::resource('emails/orders', CheckoutController::class);
+// Route::resource('emails/orders', CheckoutController::class);

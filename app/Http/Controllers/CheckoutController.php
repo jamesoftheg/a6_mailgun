@@ -16,11 +16,11 @@ class CheckoutController extends Controller
         $expiry = $request->expiry;
         $email = $request->email;
 
-        $fname = session()->put("first_name", $first_name);
-        $lname = session()->put("last_name", $last_name);
-        $card = session()->put("card", $credit_card);
-        $expiration = session()->put("expiration", $expiry);
-        $user_email = session()->put("email", $email);
+        $fname = $request->session()->put("first_name", $first_name);
+        $lname = $request->session()->put("last_name", $last_name);
+        $card = $request->session()->put("card", $credit_card);
+        $expiration = $request->session()->put("expiration", $expiry);
+        $user_email = $request->session()->put("email", $email);
 
         return view('emails.orders.shipped');
     }
