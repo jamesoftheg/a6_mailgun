@@ -10,7 +10,7 @@ The body of your message.
 <?php $total = 0; ?>
 
 @if(session()->has('userinfo'))
-@foreach(session('cart') as $id => $info)
+@foreach(session('userinfo') as $id => $info)
 {{$item['firstname']}}
 {{$item['lastname']}}
 @endforeach
