@@ -142,7 +142,18 @@ class ItemsController extends Controller
         $expiration = $request->session()->put("expiration", $expiry);
         $user_email = $request->session()->put("email", $email);
 
-        return (new OrdersShipped())->render();
+        $receipt = new OrdersShipped();
+
+        Mail::to('gelfandjames@gmail.com')
+        ->send($receipt);
+
+        /*
+        Mail::to('gelfandjames@gmail.com')
+        ->cc($moreUsers)
+        ->send($receipt));
+        */
+
+        return $receipt->render();
     }
 
 }
