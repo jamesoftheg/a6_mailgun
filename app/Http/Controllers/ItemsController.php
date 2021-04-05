@@ -28,7 +28,7 @@ class ItemsController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('items.index')
+            return redirect('items')
                 ->withErrors($validator)
                 ->withInput();
         } else {
