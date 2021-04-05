@@ -40,7 +40,7 @@
 
             <p>Checkout:</p>
 
-            <form action="/bookings" method="post">
+            <form action="/checkout" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="first_name">First Name:</label>

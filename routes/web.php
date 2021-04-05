@@ -19,22 +19,14 @@ use App\Http\Controllers\ItemsController;
 // Using a controller
 Route::get('/', [PagesController::class,"index"]);
 
-//Route::get('items/cart', 'ItemsController@cart');
-
 Route::get('cart', [ItemsController::class,"cart"]);
-
-//Route::get('add/{id}', [ItemsController::class,"add"]);
 
 Route::post('add/{id}', [ItemsController::class,"add"]);
 
+Route::post('checkout', [ItemsController::class,"checkout"]);
+
 Route::resource('items', ItemsController::class);
 
-Route::post('checkout', [CheckoutController::class,"checkout"]);
+Route::post('emails', [CheckoutController::class,"emails"]);
 
-Route::resource('orders', CheckoutController::class);
-
-//Route::get('items/cart', [ItemsController::class,"cart"]);
-
-//Route::get('add/{id}', 'ItemsController@add');
-
-//Route::get('cart', 'ItemsController@cart');
+Route::resource('emails/orders', CheckoutController::class);
