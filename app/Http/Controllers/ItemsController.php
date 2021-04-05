@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Validator;
 use App\Mail\OrdersShipped;
 Use Illuminate\Support\Facades\Mail;
 
+/**
+ * "StAuth10065: I James Gelfand, 000275852 certify that this material is my original work. 
+ * No other person's work has been used without due acknowledgement. 
+ * I have not made my work available to anyone else."
+ */
+
 class ItemsController extends Controller
 {
     /**
@@ -23,6 +29,7 @@ class ItemsController extends Controller
 
     public function add(Request $request, $id) {
 
+        // Validate form entry
         $validator = Validator::make($request->all(), [
             'quantity' => 'required|numeric|min:1',
         ]);
@@ -40,12 +47,14 @@ class ItemsController extends Controller
                 $cart = [];
             }
 
+            // Retrieve item information from database
             $item_name = Item::select('*')->where('id', $id)->value('name');
             $item_price = Item::select('*')->where('id', $id)->value('price');
             $item_quantity = $request->quantity;
 
             $added = false;
 
+            // Calculate the total cost, add to session variable.
             $totalcost = session()->get("totalcost");
             $totalcost += $item_price * $item_quantity;
             
@@ -53,6 +62,7 @@ class ItemsController extends Controller
                 ['totalcost' => $totalcost]
             );
 
+            // Create item within array
             foreach($cart as &$item) {
                 if($item['name'] === $item_name) {
                     $item['quantity'] += $item_quantity;
@@ -76,12 +86,19 @@ class ItemsController extends Controller
         }
     }
 
+    /**
+     * View cart
+     */
     public function cart() {
         return view('items.cart');
     }
 
+    /**
+     * Checkout, retrieves information from form and generates email
+     */
     public function checkout(Request $request) {
 
+        // Validate form entry
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -95,7 +112,7 @@ class ItemsController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
-
+            // Create session variable and store user info
             $userinfo = session()->get("userinfo");
             $userinfo = [];
 
@@ -117,13 +134,8 @@ class ItemsController extends Controller
                 ['userinfo' => $userinfo]
             );
 
-            $fname = $request->session()->put("first_name", $first_name);
-            $lname = $request->session()->put("last_name", $last_name);
-            $card = $request->session()->put("card", $credit_card);
-            $expiration = $request->session()->put("expiration", $expiry);
-            $user_email = $request->session()->put("email", $email);
-
-            $receipt = new OrdersShipped($fname, $lname);
+            // Create receipt
+            $receipt = new OrdersShipped();
 
             Mail::to($email)
             ->send($receipt);

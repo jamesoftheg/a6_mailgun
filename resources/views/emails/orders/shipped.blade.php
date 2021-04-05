@@ -46,7 +46,7 @@ Your order has been received and will be processed shortly.
 @else
 <p>Checkout empty.</p>
 @endif
-# Total:
+<h3>Total:</h3>
 @if(session()->has('totalcost'))
 ${{session()->get('totalcost')}}
 @endif
