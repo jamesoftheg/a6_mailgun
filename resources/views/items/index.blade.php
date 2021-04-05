@@ -86,6 +86,9 @@
                 </tbody>
             </table>
             <p><?php $total ?></p>
+        @else
+            <p>Cart empty.</p>
+        @endif
         </div>
     </div>
 
