@@ -11,11 +11,11 @@ The body of your message.
 
 @if(session()->has('userinfo'))
 @foreach(session('userinfo') as $info)
-{{$info['firstname']}}
-{{$info['lastname']}}
-{{$info['creditcard']}}
-{{$info['expiry']}}
-{{$info['email']}}
+<p>First Name: {{$info['firstname']}}</p>
+<p>Last Name: {{$info['lastname']}}</p>
+<p>Credit Card: {{$info['creditcard']}}</p>
+<p>Expiration Date: {{$info['expiry']}}</p>
+<p>Email: {{$info['email']}}</p>
 @endforeach
 @else
 <p>No user info.</p>
