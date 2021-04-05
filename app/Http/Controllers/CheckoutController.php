@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use Illuminate\Support\Facades\Validator;
+use App\Mail\OrdersShipped;
 
 class CheckoutController extends Controller
 {
@@ -22,6 +23,6 @@ class CheckoutController extends Controller
         $expiration = $request->session()->put("expiration", $expiry);
         $user_email = $request->session()->put("email", $email);
 
-        return view('emails.orders.shipped');
+        return (new OrdersShipped())->render();
     }
 }

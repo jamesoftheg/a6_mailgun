@@ -141,7 +141,7 @@ class ItemsController extends Controller
         $expiration = $request->session()->put("expiration", $expiry);
         $user_email = $request->session()->put("email", $email);
 
-        return view('emails.orders.shipped');
+        return (new OrdersShipped())->render();
     }
 
 }
