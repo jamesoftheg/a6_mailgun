@@ -65,7 +65,7 @@
                 </div>
                 <div class="form-group">
                     <label for="expiry">Expiry:</label>
-                    <input type="text" class="form-control" id="expiry"  name="expiry">
+                    <input type="date" class="form-control" id="expiry"  name="expiry">
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>

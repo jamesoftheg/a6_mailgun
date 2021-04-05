@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Shopping Page</h1>
 
-        <h1>Books Available:</h1>
+        <h2>Books Available:</h2>
 
         @if(session('success'))
 
@@ -61,7 +61,7 @@
 
             <button class="btn btn-warning btn-block text-center"><a class="nav-item nav-link" href="/cart">View Cart</a></button>
         @else
-            <h2>No items found.</h2>
+            <h3>No items found.</h3>
         @endif
 
     </div>
@@ -69,7 +69,7 @@
         <div class="hotelcard">
 
         @if(session()->has('cart'))
-           <h2>Cart found.</h2>
+           <h3>Your Cart:</h3>
             <table class="table">
                 <thead>
                 <tr>
