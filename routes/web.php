@@ -29,6 +29,10 @@ Route::post('add/{id}', [ItemsController::class,"add"]);
 
 Route::resource('items', ItemsController::class);
 
+Route::post('checkout', [CheckoutController::class,"checkout"]);
+
+Route::resource('orders', CheckoutController::class);
+
 //Route::get('items/cart', [ItemsController::class,"cart"]);
 
 //Route::get('add/{id}', 'ItemsController@add');
