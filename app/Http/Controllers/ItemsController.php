@@ -47,7 +47,7 @@ class ItemsController extends Controller
             $added = false;
 
             $totalcost = session()->get("totalcost");
-            $totalcost = $item_price * $item_quantity;
+            $totalcost += $item_price * $item_quantity;
             
             session(
                 ['totalcost' => $totalcost]
