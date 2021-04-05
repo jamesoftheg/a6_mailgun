@@ -10,9 +10,9 @@ The body of your message.
 <?php $total = 0; ?>
 
 @if(session()->has('userinfo'))
-@foreach(session('userinfo') as $id => $info)
-{{$item['firstname']}}
-{{$item['lastname']}}
+@foreach(session('userinfo') as $info)
+{{$info['firstname']}}
+{{$info['lastname']}}
 @endforeach
 @else
 <p>No user info.</p>
