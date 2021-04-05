@@ -37,7 +37,7 @@ Your order has been received and will be processed shortly.
 <tr>
 <td>{{$item['name']}}</td>
 <td>${{$item['price']}}</td>
-<td>{{$item['quantity']}}</td>
+<td>x {{$item['quantity']}}</td>
 <td>${{$item['quantity'] * $item['price']}}</td>
 </tr>
 @endforeach

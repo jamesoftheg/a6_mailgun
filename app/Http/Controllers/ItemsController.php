@@ -12,6 +12,9 @@ Use Illuminate\Support\Facades\Mail;
  * "StAuth10065: I James Gelfand, 000275852 certify that this material is my original work. 
  * No other person's work has been used without due acknowledgement. 
  * I have not made my work available to anyone else."
+ * 
+ * http://lab6mailgun.herokuapp.com
+ * 
  */
 
 class ItemsController extends Controller
