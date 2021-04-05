@@ -88,11 +88,27 @@ class ItemsController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         } else {
+
+            $userinfo = session()->get("userinfo");
+            $userinfo = [];
+
             $first_name = $request->first_name;
             $last_name = $request->last_name;
             $credit_card = $request->credit_card;
             $expiry = $request->expiry;
             $email = $request->email;
+
+            array_push($userinfo, [
+                'firstname' => $first_name,
+                'lastname' => $last_name,
+                'creditcard' => $credit_card,
+                'expiry' => $expiry,
+                'email' => $email
+            ]);
+
+            session(
+                ['userinfo' => $userinfo]
+            );
 
             $fname = $request->session()->put("first_name", $first_name);
             $lname = $request->session()->put("last_name", $last_name);

@@ -9,12 +9,14 @@ The body of your message.
 <?php $rowTotal = 0; ?>
 <?php $total = 0; ?>
 
-@component('mail::table')
-| Laravel       | Table         | Example  |
-| ------------- |:-------------:| --------:|
-| Col 2 is      | Centered      | $10      |
-| Col 3 is      | Right-Aligned | $20      |
-@endcomponent
+@if(session()->has('userinfo'))
+@foreach(session('cart') as $id => $info)
+{{$item['firstname']}}
+{{$item['lastname']}}
+@endforeach
+@else
+<p>No user info.</p>
+@endif
 
 @if(session()->has('cart'))
 <p>Cart found.</p>
@@ -41,7 +43,7 @@ The body of your message.
 </table>
 <p><?php $total ?></p>
 @else
-<p>Cart empty.</p>
+<p>Checkout empty.</p>
 @endif
 </div>
 </div>
