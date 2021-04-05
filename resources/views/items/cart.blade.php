@@ -23,7 +23,6 @@
                 </thead>
                 <tbody>
                 @foreach(session('cart') as $id => $item)
-                    {{$total += $item['quantity'] * $item['price']}}
                     <tr>
                         <td>{{$item['name']}}</td>
                         <td>${{$item['price']}}</td>
@@ -73,11 +72,12 @@
                     <label for="email">Email:</label>
                     <input type="text" class="form-control" id="email"  name="email">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Checkout</button>
             </form>
 
         @else
             <p>Cart not found.</p>
+            <button type="submit" class="btn btn-danger"><a class="nav-item nav-link" href="/items">Back to Shopping Page</a></button>
         @endif
         </div>
     </div>
