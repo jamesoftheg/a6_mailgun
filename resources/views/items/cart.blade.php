@@ -11,7 +11,6 @@
         <div class="hotelcard">
 
         @if(session()->has('cart'))
-           <p>Cart has been found.</p>
             <table class="table">
                 <thead>
                 <tr>
@@ -33,9 +32,9 @@
                 </tbody>
             </table>
 
-            <p>Total:</p>
+            <h3>Total:</h3>
             @if(session()->has('totalcost'))
-                {{session()->get('totalcost')}}
+                ${{session()->get('totalcost')}}
             @endif
 
             @if ($errors->any())
@@ -48,7 +47,7 @@
                 </div>
             @endif
 
-            <p>Checkout:</p>
+            <h1>Checkout:</h1>
 
             <form action="/checkout" method="post">
                 @csrf
@@ -76,7 +75,7 @@
             </form>
 
         @else
-            <p>Cart not found.</p>
+            <h2>Cart not found.</h2>
             <button type="submit" class="btn btn-danger"><a class="nav-item nav-link" href="/items">Back to Shopping Page</a></button>
         @endif
         </div>

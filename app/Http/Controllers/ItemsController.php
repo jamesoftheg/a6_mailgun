@@ -27,6 +27,9 @@ class ItemsController extends Controller
         return view('items.index')->with('items', $items);
     }
 
+    /**
+     * Add item to cart.
+     */
     public function add(Request $request, $id) {
 
         // Validate form entry
@@ -137,6 +140,7 @@ class ItemsController extends Controller
             // Create receipt
             $receipt = new OrdersShipped();
 
+            // Send email
             Mail::to($email)
             ->send($receipt);
 

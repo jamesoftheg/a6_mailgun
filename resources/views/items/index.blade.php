@@ -5,9 +5,8 @@
 @section('content')
     <div class="container">
         <h1>Shopping Page</h1>
-        <p>Goods and services.</p>
 
-        <h1>Items</h1>
+        <h1>Books Available:</h1>
 
         @if(session('success'))
 
@@ -62,7 +61,7 @@
 
             <button class="btn btn-warning btn-block text-center"><a class="nav-item nav-link" href="/cart">View Cart</a></button>
         @else
-            <p>No items found.</p>
+            <h2>No items found.</h2>
         @endif
 
     </div>
@@ -70,7 +69,7 @@
         <div class="hotelcard">
 
         @if(session()->has('cart'))
-           <p>Cart found.</p>
+           <h2>Cart found.</h2>
             <table class="table">
                 <thead>
                 <tr>
@@ -92,7 +91,7 @@
                 </tbody>
             </table>
         @else
-            <p>Cart empty.</p>
+            <h2>Cart empty.</h2>
         @endif
         </div>
     </div>

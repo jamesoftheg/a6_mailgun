@@ -1,5 +1,5 @@
 @component('mail::message')
-# Introduction
+# Web Receipt
 
 Thank you for shopping with us today.
 Your order has been received and will be processed shortly.
