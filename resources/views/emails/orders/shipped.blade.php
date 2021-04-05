@@ -34,19 +34,21 @@ Your order has been received and will be processed shortly.
 </thead>
 <tbody>
 @foreach(session('cart') as $id => $item)
-<p type="hidden">{{$total += $item['quantity'] * $item['price']}}</p>
 <tr>
 <td>{{$item['name']}}</td>
-<td>{{$item['price']}}</td>
+<td>${{$item['price']}}</td>
 <td>{{$item['quantity']}}</td>
-<td>{{$item['quantity'] * $item['price']}}</td>
+<td>${{$item['quantity'] * $item['price']}}</td>
 </tr>
 @endforeach
 </tbody>
 </table>
-<p><?php $total ?></p>
 @else
 <p>Checkout empty.</p>
+@endif
+# Total:
+@if(session()->has('totalcost'))
+${{session()->get('totalcost')}}
 @endif
 </div>
 

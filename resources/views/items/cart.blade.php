@@ -10,9 +10,6 @@
     <div class="container">
         <div class="hotelcard">
 
-        <?php $rowTotal = 0; ?>
-        <?php $total = 0; ?>
-
         @if(session()->has('cart'))
            <p>Cart has been found.</p>
             <table class="table">
@@ -29,16 +26,15 @@
                     {{$total += $item['quantity'] * $item['price']}}
                     <tr>
                         <td>{{$item['name']}}</td>
-                        <td>{{$item['price']}}</td>
+                        <td>${{$item['price']}}</td>
                         <td>{{$item['quantity']}}</td>
-                        <td>{{$item['quantity'] * $item['price']}}</td>
+                        <td>${{$item['quantity'] * $item['price']}}</td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            <p>{{$total}}</p>
 
-            <p>Total</p>
+            <p>Total:</p>
             @if(session()->has('totalcost'))
                 {{session()->get('totalcost')}}
             @endif
