@@ -26,11 +26,7 @@
                 </thead>
                 <tbody>
                 @foreach(session('cart') as $id => $item)
-                    <?php 
-                        $quantity = session('cart')->get('quantity');
-                        $price = session('cart')->get('price');
-                        $total += $price * $quantity;
-                    ?>
+                    <?php $total += {{$item['quantity'] * $item['price']}}; ?>
                     <tr>
                         <td>{{$item['name']}}</td>
                         <td>{{$item['price']}}</td>
