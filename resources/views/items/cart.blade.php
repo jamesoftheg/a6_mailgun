@@ -64,7 +64,7 @@
                     <input type="text" class="form-control" id="credit_card"  name="credit_card">
                 </div>
                 <div class="form-group">
-                    <label for="expiry">Expiry:</label>
+                    <label for="expiry">Expiry (Month/Year):</label>
                     <input type="month" class="form-control" id="expiry"  name="expiry">
                 </div>
                 <div class="form-group">

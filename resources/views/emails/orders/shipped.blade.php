@@ -54,4 +54,5 @@ ${{session()->get('totalcost')}}
 
 Thanks,<br>
 {{ config('app.name') }}
+<p>James Gelfand - 000275852</p>
 @endcomponent
