@@ -35,7 +35,7 @@
                     </tr>
                 @endforeach
                 </tbody>
-                <p>Total: <?php $total ?></p>
+                <p>Total: <?php echo $total ?></p>
             </table>
 
             <p>Checkout:</p>
