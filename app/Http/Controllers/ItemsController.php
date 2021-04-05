@@ -75,24 +75,38 @@ class ItemsController extends Controller
 
     public function checkout(Request $request) {
 
-        $first_name = $request->first_name;
-        $last_name = $request->last_name;
-        $credit_card = $request->credit_card;
-        $expiry = $request->expiry;
-        $email = $request->email;
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'credit_card' => 'required|numeric',
+            'expiry' => 'required',
+            'email' => 'required|email:rfc,dns',
+        ]);
 
-        $fname = $request->session()->put("first_name", $first_name);
-        $lname = $request->session()->put("last_name", $last_name);
-        $card = $request->session()->put("card", $credit_card);
-        $expiration = $request->session()->put("expiration", $expiry);
-        $user_email = $request->session()->put("email", $email);
+        if ($validator->fails()) {
+            return redirect('cart')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $first_name = $request->first_name;
+            $last_name = $request->last_name;
+            $credit_card = $request->credit_card;
+            $expiry = $request->expiry;
+            $email = $request->email;
 
-        $receipt = new OrdersShipped($fname, $lname);
+            $fname = $request->session()->put("first_name", $first_name);
+            $lname = $request->session()->put("last_name", $last_name);
+            $card = $request->session()->put("card", $credit_card);
+            $expiration = $request->session()->put("expiration", $expiry);
+            $user_email = $request->session()->put("email", $email);
 
-        Mail::to('gelfandjames@gmail.com')
-        ->send($receipt);
+            $receipt = new OrdersShipped($fname, $lname);
 
-        return $receipt->render();
+            Mail::to('gelfandjames@gmail.com')
+            ->send($receipt);
+
+            return $receipt->render();
+        }
     }
 
 }
