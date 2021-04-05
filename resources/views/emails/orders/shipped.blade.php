@@ -13,6 +13,9 @@ The body of your message.
 @foreach(session('userinfo') as $info)
 {{$info['firstname']}}
 {{$info['lastname']}}
+{{$info['creditcard']}}
+{{$info['expiry']}}
+{{$info['email']}}
 @endforeach
 @else
 <p>No user info.</p>
