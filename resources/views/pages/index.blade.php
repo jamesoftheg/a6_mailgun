@@ -4,5 +4,5 @@
 <!-- If we want this to go into our content we have to wrap in section -->
 @section('content')
     <h1>Home</h1>
-    <p>This is the index page.</p>
+    <p>Hot Girl Summer.</p>
 @endsection
