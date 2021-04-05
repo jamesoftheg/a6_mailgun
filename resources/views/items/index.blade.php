@@ -50,7 +50,7 @@
                 </tbody>
             </table>
 
-            <a class="nav-item nav-link" href="/cart">View Cart</a>
+            <button class="btn btn-warning btn-block text-center"><a class="nav-item nav-link" href="/cart">View Cart</a></button>
         @else
             <p>No items found.</p>
         @endif
