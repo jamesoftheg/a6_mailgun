@@ -119,9 +119,8 @@ class ItemsController extends Controller
             $receipt = new OrdersShipped($fname, $lname);
 
             Mail::to($email)
+            ->from('laravelstore@email.com')
             ->send($receipt);
-
-
 
             return $receipt->render();
         }
