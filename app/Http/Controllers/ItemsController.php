@@ -102,8 +102,10 @@ class ItemsController extends Controller
 
             $receipt = new OrdersShipped($fname, $lname);
 
-            Mail::to('gelfandjames@gmail.com')
+            Mail::to($email)
             ->send($receipt);
+
+
 
             return $receipt->render();
         }
