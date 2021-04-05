@@ -46,6 +46,13 @@ class ItemsController extends Controller
 
             $added = false;
 
+            $totalcost = session()->get("totalcost");
+            $totalcost = $item_price * $item_quantity;
+            
+            session(
+                ['totalcost' => $totalcost]
+            );
+
             foreach($cart as &$item) {
                 if($item['name'] === $item_name) {
                     $item['quantity'] += $item_quantity;
@@ -119,7 +126,6 @@ class ItemsController extends Controller
             $receipt = new OrdersShipped($fname, $lname);
 
             Mail::to($email)
-            ->from('laravelstore@email.com')
             ->send($receipt);
 
             return $receipt->render();

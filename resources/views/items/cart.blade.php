@@ -38,6 +38,11 @@
             </table>
             <p>{{$total}}</p>
 
+            <p>Total</p>
+            @if(session()->has('totalcost'))
+                {{session()->get('totalcost')}}
+            @endif
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
