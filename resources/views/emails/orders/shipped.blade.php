@@ -1,14 +1,14 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+Thank you for shopping with us today.
+Your order has been received and will be processed shortly.
 
 <div class="container">
-<div class="hotelcard">
 
 <?php $rowTotal = 0; ?>
 <?php $total = 0; ?>
-
+# User Information
 @if(session()->has('userinfo'))
 @foreach(session('userinfo') as $info)
 <p>First Name: {{$info['firstname']}}</p>
@@ -22,9 +22,9 @@ The body of your message.
 @endif
 
 @if(session()->has('cart'))
-<p>Cart found.</p>
+# Your Cart
 <table class="table">
-<thead>
+<thead class="thead-dark">
 <tr>
 <th scope="col">Item Name:</th>
 <th scope="col">Price:</th>
@@ -34,7 +34,7 @@ The body of your message.
 </thead>
 <tbody>
 @foreach(session('cart') as $id => $item)
-<p hidden>{{$total += $item['quantity'] * $item['price']}}</p>
+<p type="hidden">{{$total += $item['quantity'] * $item['price']}}</p>
 <tr>
 <td>{{$item['name']}}</td>
 <td>{{$item['price']}}</td>
@@ -49,11 +49,6 @@ The body of your message.
 <p>Checkout empty.</p>
 @endif
 </div>
-</div>
-
-@component('mail::button', ['url' => ''])
-Button Text
-@endcomponent
 
 Thanks,<br>
 {{ config('app.name') }}

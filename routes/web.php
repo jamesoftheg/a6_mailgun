@@ -26,7 +26,3 @@ Route::post('add/{id}', [ItemsController::class,"add"]);
 Route::post('checkout', [ItemsController::class,"checkout"]);
 
 Route::resource('items', ItemsController::class);
-
-// Route::post('emails', [CheckoutController::class,"emails"]);
-
-// Route::resource('emails/orders', CheckoutController::class);
